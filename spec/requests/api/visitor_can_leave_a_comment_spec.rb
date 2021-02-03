@@ -1,12 +1,13 @@
 RSpec.describe 'POST /api/articles/:article_id/comments', type: :request do
+  let!(:existing_article) { create(:article)}
 
   describe 'successfully create a comment' do
     before do
-      post "api/articles/#{existing_post.id}/comments",
+      post "/api/articles/#{existing_article.id}/comments",
       params: {
         comment: {
           body: "A comment",
-          post_id: existing_post.id,
+          article_id: existing_article.id,
         }
       }
     end
